@@ -9,7 +9,7 @@ description: > # this means to ignore newlines until "email:"
 
 email: beachamc@me.com
 #blog logo
-logo: "/assets/images/logo.png"
+logo: "/assets/images/prifle.png"
 # blog cover
 cover: "/assets/images/cover.jpg"
 
