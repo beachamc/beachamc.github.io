@@ -9,13 +9,13 @@ description: > # this means to ignore newlines until "email:"
 
 email: beachamc@me.com
 #blog logo
-logo: "/assets/images/df_logo.jpg"
+logo: "/assets/images/logo.png"
 # blog cover
-cover: "/assets/images/cA4aKEIPQrerBnp1yGHv_IMG_9534-3-2.jpg"
+cover: "/assets/images/cover.jpg"
 
 name: 'Cameron Beacham'
 author: 'Cameron Beacham'
-author_image: "/assets/images/author.jpg"
+author_image: "/assets/images/profile.png"
 
 paginate:	5
 
