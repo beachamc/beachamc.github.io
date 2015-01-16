@@ -7,7 +7,7 @@ tags: homework
 image: /assets/images/desktopx2.jpg
 ---
 
-Open source projects are a great way to get into developing on projects of a larger scale. However, there are literally thousands of open source projects out there. I researched a few projects that interested me and give descriptions of each of them below:
+Open source projects are a great way to get into developing on projects of a larger scale. However, there are literally thousands of open source projects out there. I researched a few projects that interested me and give descriptions of each of them below. They are listed in order of preference:
 
 First is an open source python web crawler called [Scrapy](http://scrapy.org/) (Here is a [link](https://github.com/scrapy/scrapy) to their Github). Scrapy is really interesting to me because it allows you to define patterns for elements on a page and then it will crawl a given website or list of websites and mine the information that you need. This could be really useful in a data mining application or even to aggregate data for a website that brings together information from multiple sources. Scrapy is written almost entirely in Python and would be a great option for us since everyone seems to be very comfortable with Python. Second, there is a lot of traffic on their [Github](https://github.com/scrapy/scrapy) and they are good about documenting issues that needs to be fixed as well as labeling their diffuculty to fix. Even more, Scrapy seems like an interesting framework and even if we don't decide to use it for our project, I've still starred it on Github and will definitly take a look at it in the future.
 
