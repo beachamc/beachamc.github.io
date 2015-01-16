@@ -4,7 +4,7 @@ title:  "My H/FOSS Preferences"
 date:   2015-01-14 20:09:25
 categories: homework
 tags: featured
-image: /assets/images/cover.jpg
+image: /assets/images/desktop.jpg
 ---
 Updated
 
