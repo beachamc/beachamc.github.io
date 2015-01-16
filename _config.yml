@@ -19,7 +19,7 @@ author_image: "/assets/images/profile.png"
 
 paginate:	5
 
-url: "http://***.***" # the base hostname & protocol for your site
+url: "http://beachamc.github.io" # the base hostname & protocol for your site
 baseurl: ""
 
 # social icons and sharing options
