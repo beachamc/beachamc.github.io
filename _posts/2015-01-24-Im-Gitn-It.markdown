@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "I'm Git'n it"
+date:   2015-01-24 18:09:15
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
+Using git is one of the most useful things I have learned in the past couple of years. Version control systems are extremely powerful and I think that they should be one of the first things that you learn when beginning to learn programming. I have been using git for a while now and have almost exclusively used the command line interface. I downloaded and played around with the GUI client for OSX and it wasn't incredibly different than how I normally do things. 
+
+The first major--and obvious--difference between the CLI(Command Line Interface) and the client is the GUI interface. I found it contained a lot of the information that I normally used gihub.com for and was well laid out. The majority of the time using git follows a typical pattern of ```git add .``` followed by ```git commit -m "some message"``` and then a final git ```git push origin master```. It was nice when using the client that those steps seemed pretty automated. However, I typically commit multiple times in one sitting and can easily pull up my previous commands by pressing up in terminal so in terms of time, its essentially the same. The main benefit I see in the git client is that you get an interface that shows you the options available to you. Personally, I have used git enough that I can navigate faster in the command line than navigating menus. 
+
+After using both, I would still stick with the CLI because it is what I am used to and I can get around in it fine. However, for those just starting out the GUI client is a great option because it allows them to see all the features that are not obvious when only using the CLI. My favorite part about the client was getting to see things like the commits, branches, and changes which I normally went to gihub.com for. While the CLI still has these features its much easier to access them in the GUI. 
