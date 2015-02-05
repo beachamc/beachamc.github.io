@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "My H/FOSS Preferences"
+title:  "Bug Juice"
 date:   2015-02-04 10:02:25
 categories: homework
 tags: homework
