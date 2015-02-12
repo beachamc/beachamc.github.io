@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "Squashed?"
+date:   2015-02-12 80:00:25
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
+The bug that our team decided to tackle was a documentation bug. Basically, when you are looking to contribute to the project you are more than likely going to go to the "install from source" page. However, for Mopidy, it wasn't that simple. The instructions for contributing was split amongst the [contributing](https://docs.mopidy.com/en/latest/contributing/?highlight=contribute) and the [install from source](https://docs.mopidy.com/en/latest/installation/source/) page. For our contribution we decided to make it a little more clear where you should go when installing from source. Laura actually created the [pull request](https://github.com/mopidy/mopidy/pull/959) and it actually has already been merged for [this](https://github.com/mopidy/mopidy/issues/903) issue. 
+
+Additionally, there are a few documentation bugs we have discovered as we were moving through the project. One in particular, is using the installation for OSX for those who would like to contribute on OSX. The brew install gst-python command no longer works and the whole process of trying to get things set up for development on OSX was super buggy. One change we are planning to suggest is adding documentation on how to contribute for those using a Mac. They have install instructions for a mac but the contributing is strictly for Linux. This would be a really good contribution because a lot of development could be hindered due to complicated setup on a Mac. 
