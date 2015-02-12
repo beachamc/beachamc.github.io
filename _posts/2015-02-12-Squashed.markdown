@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Squashed?"
-date:   2015-02-12 80:00:25
+date:   2015-02-12 08:00:25
 categories: homework
 tags: homework
 image: /assets/images/desktopx2.jpg
