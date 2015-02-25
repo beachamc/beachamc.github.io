@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Refactoring Mindset"
-date:   2015-02-22 08:00:25
+date:   2015-02-24 08:00:25
 categories: homework
 tags: homework
 image: /assets/images/desktopx2.jpg
