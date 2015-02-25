@@ -40,3 +40,20 @@ if ($edit==true && !($days[6]->get_year()<$year
         name=\"submit\">";
 
 {% endhighlight %}
+
+C) Both of the above lines can be combined into a predates(a, b) function that will return True if a predates b. This will help us git rid of that long string of conditions in the if block.
+
+{% highlight php startinline=true %}
+
+function predates($days,$year,$doy) {
+	if ($days[6]->get_year()<$year 
+    || ($days[6]->get_year()==$year 
+    && $days[6]->get_day_of_year()<$doy)) {
+    	return False;
+	}
+	else {
+		return True;
+	}
+}
+
+{% endhighlight %}
