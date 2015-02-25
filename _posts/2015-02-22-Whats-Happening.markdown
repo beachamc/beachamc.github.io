@@ -1,0 +1,12 @@
+---
+layout: post
+title:  "What's Happening?"
+date:   2015-02-22 08:00:25
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
+The excercises from this week were realy interesting. Mostly because I didn't realize that you could actually change a command on your computer. In the past I just created an alias with the additional flags that I needed. However, it was particularly interesting to see how to patch an executable because I probably would be reluctant to change commands on my computer especially popular ones such as the echo command. I have already taken operating systems so I was familiar with the diff command. It is also heavily used in git so I have had experience with it there as well. Overall, this exercise was interesting and not something that I have seen before. 
+
+The article I read is called "Scripting Multiple CPUs with Safe Data Sharing". The article talks about the fact that scripting languages are becoming so popular, however, they provide little support for multithreading and data sharing as compared to compiled languages. The major ones that this article discusses are Python, Ruby, Perl, Javascript, and Lua. It discusses all the multithreading components of each language and while they all have some type of multithreading components there is typically a caveat in using them. Python for example has a few different modules allowing for multiple threads however, they do so by including a Global Interepereter Lock that only allows a single thread to execute at a time but causes a bottleneck on performance. Javascript, as the article points out, completely lacks concurrency support as compared to the other languages. The article also outlines some solutions for these programming languages that could help push them in the right direction. The first is that they need to turn off sharing data by default and make the programmer expicitly decide when data is shared. This will help with the concurrency but the data has to constantly be copied and could cause a performance issue. Basically, it seems as if these languages need to act on the need for concurrency and safe data sharing for their future updates as their languages become more and more popular. 
