@@ -10,7 +10,7 @@ image: /assets/images/desktopx2.jpg
 A) The module in RMH Homebase that displays a shift’s notes field is the calendar module.
 
 B) 
-{% highlight php %}
+{% highlight php startinline=true %}
 
 	if($edit && ($year < $day->get_year() || $year == $day->get_year() && $doy <= $day->get_day_of_year() ) )
 			$s=$s."e";
