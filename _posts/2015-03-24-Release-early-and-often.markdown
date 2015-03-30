@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Release early and often"
+date:   2015-03-24 08:00:25
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
+The concept of release eary and release often is a growingly ever popular one. Agile development is a great way to improve the software design process because it utilizes this idea. Basically, in agile development both the customer and the end users of the project benefit from constant feedback during the development process. This allows the developers of the project to come up with a solution that is heavily influenced by the customer. Taking advantage of this also allows the customer to "release early". This means that the customer can release a simpler version of their completed project so that they can begin using the product. This could give them the advantage of being first to market or deploying a quick means of competition if they aren't first to market. Sure the project will not be complete or have all the features desired at this point but at least its a working version that the customer can already begin evaluating.
+The other advantage is releasing often. This is the biggest part of the development process as it is crucial in fixing bugs and adding features that could make or break the project. For example, if a company deploys a website that is only a static version of their idea site which would allow customers to purchase products online, they could then iteratively begin adding in the functionality of showing a product list, and then finally allowing customers to buy the products online. This would allow the company to quickly release a prototype and then build it into its desired goal without having to wait until all the features were finished. Releasing often also builds rapport with the users because the subsequent releases will likely have bug fixes to the feedback that the project has gotten. This shows that the company cares about the end experience of the customer and is dedicated to creating the best experience possible.
