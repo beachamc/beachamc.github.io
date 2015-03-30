@@ -14,3 +14,5 @@ Database knowledge is incredibly important no matter what field you go into. Mos
 > * It prevents unauthorized or accidental disclosure, alteration, or destruc- tion of data.
 * It prevents unauthorized or accidental access to data considered con􏰅- dential to the organization or individual who owns the data.
 * It ensures data integrity, so that the data stored in the database are always valid and accurate. 
+
+As for team progress, we've continued to make good progress and even got a video interview recorded that is currently being edited. Michael and Ron are continuing to work on their bug concerning the max song count being 10,000. 
