@@ -7,7 +7,7 @@ tags: homework
 image: /assets/images/desktopx2.jpg
 ---
 
-**8.1.1**
+## 8.1.1
 
 I chose to comment through a recent project I did where I needed to quiz myself on a set of questions. The following are python modules I wrote to quiz myself. I only comment sections of code that aren't particularly clear and the heading comments for each method.
 
@@ -231,4 +231,11 @@ def makeQuestions(questions):
 		questionList.append(myQuestion)
 	return questionList
 {% endhighlight %}
+
+The documentation for this program can be found [here](https://github.com/beachamc/Quizzer) in the readme.
+
+## 8.4
+
+The project I picked was [mopidy](http://mopidy.com/) and it is our open source project we have been working on. There are a number of bugs that we have looked at that seem a bit out of our reach because we aren't familiar with the API. Bug [1004](https://github.com/mopidy/mopidy/issues/1004) deals with implementing a minimalistic local file browser. This heavily relies on the library controller. There is an API for the library controller but it needs some clarification and examples. For our bug we would need to use the 'browse()' command of the library controller. The 'browse()' command takes in a 'URI' which is a filepath to a certain directory and it returns the files and subdirectories from there. This is key in our filebrowser but it doesn't specify where you get the URI. For our purposes, we would be getting a local filebrowser so we would need to get the local directory URI, this we can grab from the settings using the 'local/media_dir' parameter. The library controller does a decent job at defining these different components but its scattered across the documentation and needs some examples on usage.
+
 
