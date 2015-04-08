@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "Chapter 8"
+date:   2015-04-02 08:00:25
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
+One of the first things that this chapter mentions is a very crucial point that often gets overlooked: "Being a good programmer is a necessary but not su􏰇cient requirement for becoming a good user interface designer." People tend to think that to get into software design they have to have a background in several different programming languages and know everything about how computers work. However, for UI design, all you need to know is good design principles and the workings of whatever graphical interface you are using. The other key aspect is that being a good programmer does not make you a good UI designer automatically, they are completely separate skills and people rarely have both from my experience.
+
+This chapter also goes over some aspects of UI Design that I hadn't thought of before. One thing, for instance, is the aspect of security in UI Design. We, as software developers, tend to want to bring as much functionality as possible to the end user but sometimes the end user should only have limited access to the functionality of the software. The other thing that it mentions is documentation, which at first though seemed unecessary to me. However, even though the UI that you designed may make complete sense to you, it may not to everyone.
+
+The chapter also talks about MVC (model view controller) patterns. I had already had some experience with it from CSCI 315 so it was pretty much review for me. Other than that the rest of the chapter seemed like common sense but was definitely worth stating to bring it to mind.

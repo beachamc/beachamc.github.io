@@ -1,0 +1,108 @@
+---
+layout: post
+title:  "Chapter 6"
+date:   2015-03-31 08:00:25
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
+## 6.1
+
+{% highlight php startinline=true %}
+
+	function get_employer() {
+		return $this->employer
+	}
+	function get_contact_person() {
+		return $this->contact_person
+	}
+	function get_contact_phone() {
+		return $this->contact_phone
+	}
+
+	function set_employer($em) {
+		$this->employer = $em
+	}
+	function get_contact_person($cp) {
+		$this->contact_person = $cp
+	}
+	function get_contact_phone($cph) {
+		$this->contact_phone = $cph
+	}
+
+{% endhighlight %}
+
+## 6.2
+
+{% highlight php startinline=true %}
+
+	/**
+	 * constructor for all persons
+	 */
+	function __construct($f, $l, $a, $c, $s, $z, $p1, $p2, $e, $t, $status, $employer, $contact, $contact_phone,
+	                     $bg, $in, $sh, $con, $whe, $exp, $mot, $spe,
+                         $av, $sch, $hist, $bd, $sd,
+	                     $pubn, $myn, $privn, $pass){
+		$this->id = $f . $p1;
+		$this->first_name = $f;
+		$this->last_name = $l;
+		$this->address = $a;
+		$this->city = $c;
+		$this->state = $s;
+		$this->zip = $z;
+		$this->phone1 = $p1;
+		$this->phone2 = $p2;
+		$this->email = $e;
+		if ($t !== "")
+		   $this->type = array($t);
+		else $this->type = array();
+		$this->status = $status;
+		$this->employer = $employer;
+		$this->contact_person = $contact;
+		$this->contact_phone = $contact_phone;
+
+		$this->background_check = $bg;
+		$this->interview = $in;
+		$this->shadow = $sh;
+        $this->convictions = $con;
+		$this->wherelived = $whe;
+		$this->experience = $exp;
+		$this->motivation = $mot;
+		$this->specialties = $spe;
+
+		if ($av !== "")
+		   $this->availability = array($av);
+		else $this->availability = array();
+		if ($sch !== "")
+		   $this->schedule = array($sch);
+		else $this->schedule = array();
+		if ($hist !== "")
+		   $this->history = array($hist);
+		else $this->history = array();
+
+		$this->birthday = $bd;
+		$this->start_date = $sd;
+		$this->public_notes = $pubn;
+		$this->my_notes = $myn;
+		$this->private_notes = $privn;
+		$this->password = $pass;  // default password == $id
+		if($this->id==$this->password) $this->password = md5($this->id);
+	}
+
+{% endhighlight %}
+
+## 6.3
+
+{% highlight php startinline=true %}
+	
+	function set_status ($value) {
+	    if ($value == "valid" or $value == "invalid")
+	    	$this->status = $value;
+	}
+
+{% endhighlight %}
+
+## 6.4
+
+Refactoring here was simply a matter of searching the directory for any instances of the person constructor and modifying it to include the newly added parameters.
