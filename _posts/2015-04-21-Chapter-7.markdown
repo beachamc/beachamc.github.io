@@ -7,3 +7,299 @@ tags: homework
 image: /assets/images/desktopx2.jpg
 ---
 
+##7.1
+
+{% highlight php startinline=true %}
+
+	function setup_dbPersons() {
+			connect();
+			mysql_query("DROP TABLE IF EXISTS dbPersons");
+			mysql_query("CREATE TABLE dbPersons(id TEXT NOT NULL, first_name TEXT NOT NULL, last_name TEXT, " .
+					"    address TEXT, city TEXT, state VARCHAR(2), zip TEXT, phone1 VARCHAR(12) NOT NULL, phone2 VARCHAR(12), " .
+					"    email TEXT, type TEXT, status TEXT, employer TEXT, contact_person TEXT, contact_phone VARCHAR(12), " .
+					"    background_check TEXT, interview TEXT, shadow TEXT, " .
+					"    convictions TEXT, wherelived TEXT, experience TEXT, motivation TEXT, specialties TEXT, " .
+					"    availability TEXT, schedule TEXT, history TEXT, " .
+					"    birthday TEXT, start_date TEXT, public_notes TEXT, my_notes TEXT, private_notes TEXT, password TEXT)");
+			$admin_acct = new Person('admin','admin',null,null,null,null,null,null,null,'manager','active',null,null,null,
+				null,null,null,null,null,null,null,null,null,null,null,null,null,
+				'This is the default admin account.  It should not be used for anything but the initial editing, and then it should be deleted.',
+				null,null,'admin');
+		    $result=add_person($admin_acct);
+	        if(!$result)
+	            echo mysql_error();
+	        else echo("<br />Admin account created.  username = admin, password = admin.<br />");
+		mysql_close();
+	}
+
+{% endhighlight %}
+
+In the code above, the admin account is created with several attributes as `null`. This violates criterion #5. 
+
+{% highlight php startinline=true %}
+
+	function setup_dbSchedules () {
+		connect();
+		mysql_query("DROP TABLE IF EXISTS dbSchedules");
+		$result = mysql_query("CREATE TABLE dbSchedules (my_group TEXT, day TEXT, time TEXT, slots INT, persons TEXT, notes TEXT)");
+        if (!$result)
+		    die ("Could not create dbSchedules table: " . mysql_error());
+	    $weekdays = array('Mon','Tue','Wed','Thu','Fri');
+		$times = array('9-12','12-15','15-18','18-21');
+		$prefix = "INSERT INTO dbSchedules VALUES (";
+		foreach ($weekdays as $weekday) {
+		  foreach ($times as $time) {
+		  	if ($time != "18-21") {   // don't generate 18-21 schedule for Family Room
+		  	    mysql_query($prefix . "'One', '" . $weekday . "','" . $time . "','" . 2 . "', '', '')");
+		  	    mysql_query($prefix . "'Two', '" . $weekday . "','" . $time . "','" . 2 . "', '', '')");
+		  	    mysql_query($prefix . "'FamOne', '" . $weekday . "','" . $time . "','" . 1 . "', '', '')");
+		  	   	mysql_query($prefix . "'FamTwo', '" . $weekday . "','" . $time . "','" . 1 . "', '', '')");
+		  	}
+		  	else if ($weekday!="Fri"){
+		  		mysql_query($prefix . "'One', '" . $weekday . "','" . $time . "','" . 3 . "', '', '')");
+		  	    mysql_query($prefix . "'Two', '" . $weekday . "','" . $time . "','" . 3 . "', '', '')");
+		  	}
+		  	else {
+		  		mysql_query($prefix . "'One', '" . $weekday . "','" . "night" . "','" . 1 . "', '', '')");
+		  	    mysql_query($prefix . "'Two', '" . $weekday . "','" . "night" . "','" . 1 . "', '', '')");
+		  	}
+		  }
+		}
+        for ($i=1; $i<=5; $i++) {
+			$ithsat = "Sat" . $i;
+		    mysql_query($prefix . "'Wkd', '" . $ithsat . "', '10-13', 1," . "'', '')");
+		    mysql_query($prefix . "'Wkd', '" . $ithsat . "', '13-16', 1," . "'', '')");
+		    mysql_query($prefix . "'Wkd', '" . $ithsat . "', 'night', 1," . "'', '')");
+		}
+        for ($i=1; $i<=5; $i++) {
+			$ithsun = "Sun" . $i;
+		    mysql_query($prefix . "'Wkd', '" . $ithsun . "', '9-12', 1," . "'', '')");
+		    mysql_query($prefix . "'Wkd', '" . $ithsun . "', '14-17', 1," . "'', '')");
+		    mysql_query($prefix . "'Wkd', '" . $ithsun . "', '17-21', 1," . "'', '')");
+		}
+		mysql_close();
+	}
+
+{% endhighlight %}
+
+In the code above there is a redundancy of notes from the person class. Notes are stored here as well as in the person table which violates #6.
+
+With the second violation, the user could input notes in one section of the code and expect them to show up in another area but the other area may pull from the schedule database and not pull up their notes. This is poor design and should definitely be fixed.
+
+## 7.2
+
+{% highlight php startinline=true %}
+
+	function get_shift_month ( $id ) {
+		/** month is a part of the id passed in */
+		$month = substr($id, 0, 2);
+		return $month;
+	}
+
+	function get_shift_day ( $id ) {
+		/** day is a part of the id passed in */
+		$day = substr($id, 3, 5);
+		return $day;
+	}
+
+	function get_shift_year ( $id ) {
+		/** year is a part of the id passed in */
+		$year = substr($id, 6, 8);
+		return $year;
+	}
+
+	function get_shift_start ( $id ) {
+		connect();
+		$start=null;
+   		$query = "SELECT start_time FROM dbShifts WHERE id =\"".$id."\"";
+   		$result = mysql_query ($query);
+		if (!$result) {
+	    	echo 'Could not run query: ' . mysql_error();
+		} else {
+			$result_row=mysql_fetch_row($result);
+			if($result_row) {
+				$start = $result['start_time']
+			}
+		}
+	
+		mysql_close();
+		return $start;
+	}
+
+	function get_shift_end ( $id ) {
+		connect();
+		$end=null;
+   		$query = "SELECT end_time FROM dbShifts WHERE id =\"".$id."\"";
+   		$result = mysql_query ($query);
+		if (!$result) {
+	    	echo 'Could not run query: ' . mysql_error();
+		} else {
+			$result_row=mysql_fetch_row($result);
+			if($result_row) {
+				$end = $result['end_time']
+			}
+		}
+	
+		mysql_close();
+		return $end;
+	}
+
+{% endhighlight %}
+
+## 7.3
+
+`Month.php`
+
+{% highlight php startinline=true %}
+
+	<?php
+
+ 		include_once('RMHdate.php');
+
+		class Month {
+			private $id;	   // the first day of the month, mm-dd-yy
+		 	private $dates;    // array of 28-31 RMHdates, beginning Monday
+			private $name;     // the name of the month (ie March)
+			private $status;	// status of the month, "unpublished", "published" or "archived"
+
+		 	/**
+		 	 * Creates a new month.
+		 	 */
+		 	function __construct($id, $dates, name,$status) {
+		 		$this->id=$this->dates[0]->get_id();
+		 		$this->dates=$dates;
+		 		$this->name=$name;
+				$this->status=$status;
+		 	}
+
+			function get_name() {
+				return $this->name;
+			}
+			function get_id() {
+				return $this->id;
+			}
+			function get_dates() {
+				return $this->dates;
+			}
+			function get_status() {
+				return $this->status;
+			}
+			function set_status($s) {
+				if($s=="unpublished" || $s=="published" || $s=="archived") {
+					$this->status=$s;
+				}
+				else
+					return false;
+			}
+		}
+ 	?>
+
+{% endhighlight %}
+
+`dbMonth.php`
+
+{% highlight php startinline=true %}
+
+	<?php
+
+	include_once('Month.php');
+	include_once('dbDates.php');
+	include_once('dbinfo.php');
+
+	function setup_dbMonths() {
+	   connect();
+	   mysql_query("DROP TABLE IF EXISTS dbMonths");
+	   $result=mysql_query("CREATE TABLE dbMonths (id CHAR(8) NOT NULL, " .
+	   		     "dates TEXT, month TEXT, status TINYINT, PRIMARY KEY (id))");
+		if(!$result) {
+			echo mysql_error();
+			return false;
+		}
+		mysql_close();
+		return true;
+	}
+
+	/**
+	 * Inserts a month into the db
+	 * @param $m the month to insert
+	 */
+	function insert_dbMonth($m) {
+	   if (! $m instanceof Month) {
+			die ("Invalid argument for insert_dbMonth function call".$m);
+		}
+	   connect();
+	   $query = 'SELECT * FROM dbMonths WHERE id ="'.$m->get_id().'"';
+	    $result = mysql_query ($query);
+	    if (mysql_num_rows($result)!=0) {
+	    	delete_dbShifts($s);
+	    	connect();
+	    }
+		$query="INSERT INTO dbMonth VALUES (\"".$m->get_id()."\",\"".
+		       $m->get_date()."\",\"".$m->get_name()."\",\"".$m->get_status().")\""
+		$result=mysql_query($query);
+	    if(!$result) {
+			echo "unable to insert into dbMonth ".$m->get_id().mysql_error();
+	        mysql_close();
+	        return false;
+	    }
+	    mysql_close();
+	    return true;
+	 }
+
+	/**
+	 * Deletes a month from the db
+	 * @param $m the month to delete
+	 */
+	function delete_dbMonth($m) {
+		if (! $m instanceof Month)
+			die ("Invalid argument for delete_dbShifts function call");
+		connect();
+	    $query="DELETE FROM dbMonth WHERE id=\"".$m->get_id()."\"";
+		$result=mysql_query($query);
+		if(!$result) {
+			echo "unable to delete from dbMonth ".$m->get_id().mysql_error();
+	        mysql_close();
+	        return false;
+		}
+	    mysql_close();
+	    return true;
+	 }
+
+	/**
+	 * Updates a month in the db by deleting it (if it exists) and then replacing it
+	 * @param $m the month to update
+	 */
+	function update_dbMonth($m) {
+		if (! $m instanceof Month)
+			die ("Invalid argument for dbMonth->replace_month function call");
+		delete_dbMonth($m);
+		insert_dbMonth($m);
+		return true;
+	}
+
+	/**
+	 * Selects a month from the database
+	 * @param $id a month id
+	 * @return month or null
+	 */
+	function select_dbMonth($id) {
+		connect();
+		$m=null;
+	   $query = "SELECT * FROM dbMonth WHERE id =\"".$id."\"";
+	   $result = mysql_query ($query);
+		if (!$result) {
+		    echo 'Could not run query: ' . mysql_error();
+		}
+		else {
+			$result_row=mysql_fetch_row($result);
+			if($result_row) {
+				$m=new Month($result_row[0], $result_row[1], $result_row[2], $result_row[3]);
+			}
+		}
+		mysql_close();
+		return $m;
+	}
+
+	?>
+
+{% endhighlight %}
