@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Chapter 7"
+date:   2015-04-21 08:00:25
+categories: homework
+tags: homework
+image: /assets/images/desktopx2.jpg
+---
+
